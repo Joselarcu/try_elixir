@@ -1,0 +1,28 @@
+Struct -> map que se usa para almacenar datos. Tiene dos ventajas sobre los maps. Se les puede asignar valores por defecto y tienen algunos comprobaciones en tiempo de compilacion
+no se pueden añadir funciones a un struct
+
+
+iex(1)> has = :crypto.hash(:md5, "banana")
+<<114, 179, 2, 191, 41, 122, 34, 138, 117, 115, 1, 35, 239, 239, 124, 65>>
+
+iex(2)> Base.encode16(has)
+"72B302BF297A228A75730123EFEF7C41"
+iex(3)> :binary.bin_to_list(has)
+[114, 179, 2, 191, 41, 122, 34, 138, 117, 115, 1, 35, 239, 239, 124, 65]
+iex(4)> Identicon
+Identicon
+iex(5)> Identicon.main("banana")
+nil
+iex(6)> recompile
+Compiling 1 file (.ex)
+:ok
+iex(8)> Identicon.main("banana")
+[114, 179, 2, 191, 41, 122, 34, 138, 117, 115, 1, 35, 239, 239, 124, 65]
+iex(9)> recompile
+Compiling 1 file (.ex)
+Generated identicon app
+:ok
+iex(10)> %Identicon.Image{}
+%Identicon.Image{hex: nil}
+iex(11)> %Identicon.Image{hex: []}
+%Identicon.Image{hex: []}

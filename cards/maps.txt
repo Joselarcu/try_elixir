@@ -1,0 +1,37 @@
+## Maps
+## colors = %{primary: "red", secondary: "blue}
+## colors.primary
+## devuelve "red"
+## %{secondary: secondary_color} =colors asigna el valor de secondary a la variable secondary_color, es lo mismo que secondary_color = colors.secondary
+## secondary_color devuelve "blue"
+
+
+
+colors = %{primary: "red", secondary: "blue"}
+%{primary: "red", secondary: "blue"}
+iex(2)> colors.secondary
+"blue"
+iex(3)> second_color = colors.secondary
+"blue"
+iex(4)> %{secondary: secondary_color} = colors
+%{primary: "red", secondary: "blue"}
+iex(5)> secondary_color
+"blue"
+iex(6)> Map.put(colors, :primary, "white")
+%{primary: "white", secondary: "blue"}
+iex(7)> colors
+%{primary: "red", secondary: "blue"}
+iex(8)> colors = Map.put(colors, :primary, "white")
+%{primary: "white", secondary: "blue"}
+iex(9)> colors
+%{primary: "white", secondary: "blue"}
+iex(10)> %{colors | primary: "red"}
+%{primary: "red", secondary: "blue"}
+iex(11)> %{colors | secondary_color: "green"}
+** (KeyError) key :secondary_color not found in: %{primary: "white", secondary: "blue"}
+    (stdlib) :maps.update(:secondary_color, "green", %{primary: "white", secondary: "blue"})
+    (stdlib) erl_eval.erl:255: anonymous fn/2 in :erl_eval.expr/5
+    (stdlib) lists.erl:1263: :lists.foldl/3
+iex(11)> Map.put(colors, :third, "black")
+%{primary: "white", secondary: "blue", third: "black"}
+iex(12)>

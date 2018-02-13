@@ -1,0 +1,21 @@
+iex(1)> colors = [{:primary, "red"}, {:secondary, "green"}]
+[primary: "red", secondary: "green"]
+iex(2)> colors[:primary]
+"red"
+iex(3)> colors = [primary: "red", secondary: "blue"]
+[primary: "red", secondary: "blue"]
+iex(4)> colors = %{primary: "red", primary: "blue"}
+%{primary: "blue"}
+iex(5)> colors = [primary: "red", primary: "red"]
+[primary: "red", primary: "red"]
+
+## posible uso de una tupla dos veces, por ejemplo para acceso a bases de datos
+iex(6)> query = User.find_whee([where: user.age>10, where: user.subscribed == true])
+
+iex(6)> query = User.find_where(where: user.age >10 , where: user.subscribed == true) ** (CompileError) iex:6: undefined function user/0
+    (stdlib) lists.erl:1354: :lists.mapfoldl/3
+    (stdlib) lists.erl:1354: :lists.mapfoldl/3
+##se puede quintar los ()
+
+
+** (CompileError) iex:6: undefined function se/1
